@@ -1,5 +1,4 @@
 language: python
-dist: xenial  # required for Python >= 3.7
 python: 3.7
 cache: pip
 before_install: pip install --upgrade pip setuptools
@@ -12,5 +11,4 @@ script:
   - mypy --ignore-missing-imports .
   - pytest . --doctest-modules
 after_success:
-  - scripts/build_directory_md.py > DIRECTORY.md
-  - cat DIRECTORY.md
+  - scripts/build_directory_md.py 2>&1 | tee DIRECTORY.md
